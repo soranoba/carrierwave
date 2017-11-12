@@ -174,7 +174,7 @@ module CarrierWave
           return if frozen?
           mounter = _mounter(:#{column})
 
-          if mounter.remove?
+          if mounter.remove? || mounter.blank?
             write_uploader(mounter.serialization_column, nil)
           elsif mounter.identifiers.first
             write_uploader(mounter.serialization_column, mounter.identifiers.first)
